@@ -1,0 +1,143 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #2e2e2e;
+    padding: 1%;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo a {
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: bold;
+    color: #fffafa;
+}
+
+.menu {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+.menu li {
+    margin-right: 30px;
+    transition: all .6ms ease;
+}
+
+.menu li a {
+    text-decoration: none;
+    align-items: left;
+    color: #fffafa;
+}
+
+.login a {
+    text-decoration: none;
+    color: #fffafa;
+    padding: 6px 12px;
+    border: 1px solid #666;
+    border-radius: 4px;
+}
+
+.menu li:hover, .menu a:hover, .login a:hover {
+    color: #eb5959;
+    transform: scal(1.2);
+}
+
+/* Футтер */
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #f0f0f0;
+    padding: 0.5% 0;
+  }
+  
+  .footer-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+  
+  .footer-icons a {
+    color: #000;
+    text-decoration: none;
+    margin-right: 10px;
+  }
+
+  /* Новости */
+
+  .article {
+    text-align: center;
+    display: block;
+    width: 600px;
+    height: 400px;
+    border: 1px solid black;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+    border-radius: 30px;
+    margin: 10px auto;
+    position: relative;
+  }
+  
+  .article-title {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  .article-description {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  
+  img {
+    width: 300px;
+    height: 300px;
+    margin-bottom: 10px;
+  }
+  
+  .article-time {
+    font-size: 14px;
+    margin-bottom: 10px;
+  }
+
+  .article-time span {
+    position: absolute;
+    bottom: 5px;
+    right: 20px;
+}
+
+  .news-title-center {
+    text-align: center;
+    font-size: 34px;
+    margin: 10px;
+}
+
+/* Форма создания статьи */
+
+.div-center {
+    text-align: center;
+    margin: 10px auto;
+}
+
+.input input {
+    margin: 5px;
+    width: 50%;
+    height: 30px;
+}
+
+.input textarea {
+    margin: 5px;
+    width: 50%;
+    height: 30px;
+}

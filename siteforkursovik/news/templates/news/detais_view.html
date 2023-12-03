@@ -1,0 +1,14 @@
+{% extends 'main/layout.html' %}
+
+{% block title %}{{ news.titel }}{% endblock %}
+
+{% block content %}
+<h2 class="article-title">{{ news.titel }}</h2>
+<p class="article-description">{{ news.intro }}</p>
+<p class="article-description">{{ news.full_text }}</p>
+<img src="/img/logo.jpg" alt="Изображение статьи">
+<p class="article-time"><span>Время публикации: {{ news.date }}</span></p>
+<a href="{% url 'news-update' news.id %}" class="btn btn-warning">Редактировать статью</a></br>
+<a href="{% url 'news-delete' news.id %}" class="btn btn-warning">Удалить статью</a>
+<br><br><br>
+{% endblock %}
