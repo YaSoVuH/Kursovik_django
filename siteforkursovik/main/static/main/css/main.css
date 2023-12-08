@@ -24,6 +24,7 @@ nav {
 .menu {
     list-style: none;
     display: flex;
+    align-items: center;
     margin: 0;
     padding: 0;
 }
@@ -47,7 +48,19 @@ nav {
     border-radius: 4px;
 }
 
-.menu li:hover, .menu a:hover, .login a:hover {
+.logined a {
+  text-decoration: none;
+  color: #fffafa;
+  padding: 6px 12px;
+  border: 1px solid #666;
+  border-radius: 4px;
+}
+
+.loginedt label {
+  color: #fffafa;
+}
+
+.menu li:hover, .menu a:hover, .login a:hover, .logined a:hover {
     color: #eb5959;
     transform: scal(1.2);
 }
