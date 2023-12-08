@@ -6,13 +6,15 @@
     <div class="news-title-center">Новости:</div>
 </hr>
     {% for el in news %}
+    {% if el.is_modarated or request.user.is_superuser or request.user.is_staff %}
     <div class="article">
         <h2 class="article-title">{{ el.titel }}</h2>
         <p class="article-description">{{ el.intro }}</p>
-        <img src="/img/logo.jpg" alt="Изображение статьи">
-        <p class="article-time"><span>Время публикации: {{ el.date }}</span></p>
+        <img src="{{ el.photo }}" alt="Изображение статьи">
+        <p class="article-time"><span>Время публикации: {{ el.date_create }}</span></p>
         <a href="{% url 'news-detail' el.id %}" class="btn btn-warning">Читать статью</a>
     </div>
+    {% endif %}
     {% endfor %}
     <br><br><br>
 {% endblock %}

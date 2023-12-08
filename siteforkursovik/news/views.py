@@ -6,7 +6,7 @@ from django.views.generic import DetailView, UpdateView, DeleteView
 # Create your views here.
 
 def news_home(request):
-    news = News.objects.order_by('date')
+    news = News.objects.order_by('date_create')
     return render(request, 'news/news_home.html', {"news": news})
 
 class NewsDetailView(DetailView):

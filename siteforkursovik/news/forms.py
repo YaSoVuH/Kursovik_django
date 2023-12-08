@@ -1,10 +1,10 @@
 from .models import News
-from django.forms import ModelForm, TextInput, DateTimeInput, Textarea
+from django.forms import ModelForm, TextInput, Textarea
 
 class NewsForm(ModelForm):
     class Meta:
         model = News
-        fields = ['titel', 'intro', 'full_text', 'date']
+        fields = ['titel', 'intro', 'full_text']
 
         widgets = {
             "titel": TextInput(attrs={
@@ -18,9 +18,5 @@ class NewsForm(ModelForm):
             "full_text": Textarea(attrs={
                 'class': 'form-control',
                 'placeholder': 'Полное описание'
-            }),
-            "date": DateTimeInput(attrs={
-                'class': 'form-control',
-                'placeholder': 'Дата побликации'
             }),
         }
