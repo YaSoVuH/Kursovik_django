@@ -12,9 +12,6 @@ def index(request):
 def about(request):
     return render(request, 'main/about.html')
 
-def login(request):
-    return render(request, 'main/about.html')
-
 class RegisterUser(CreateView):
     form_class = forms.RegisterUserForm
     template_name = 'main/register.html'

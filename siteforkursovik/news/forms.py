@@ -1,10 +1,10 @@
 from .models import News
-from django.forms import ModelForm, TextInput, Textarea
+from django.forms import ModelForm, TextInput, Textarea, BooleanField
 
 class NewsForm(ModelForm):
     class Meta:
         model = News
-        fields = ['titel', 'intro', 'full_text']
+        fields = ['titel', 'intro', 'full_text', 'photo']
 
         widgets = {
             "titel": TextInput(attrs={
@@ -20,3 +20,10 @@ class NewsForm(ModelForm):
                 'placeholder': 'Полное описание'
             }),
         }
+
+class ModerationNewsForm(ModelForm):
+    is_modarated = BooleanField(label='Проверено?: ')
+
+    class Meta:
+        model = News
+        fields = ['is_modarated']

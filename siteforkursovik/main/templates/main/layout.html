@@ -18,7 +18,16 @@
             <ul class="menu">
                 <li><a href="/"><i class="fa-solid fa-house"></i> Главная</a></li>
                 <li><a href="/news/"><i class="fa-solid fa-newspaper"></i> Новости</a></li>
-                <li><a href="/about"><i class="fa-regular fa-address-card"></i> О нас</a></li>
+                <li><a href="/about"><i class="fa-solid fa-comment"></i> О нас</a></li>
+                {% if request.user.is_authenticated %}
+                <li><a href="/news/create"><i class="fa-regular fa-address-card"></i> Добавить новость</a></li>
+                {% if request.user.is_staff %}
+                <li><a href="/news/NewsModeration"><i class="fa-solid fa-magnifying-glass"></i> Модерация новости</a></li>
+                {% endif %}
+                {% if request.user.is_superuser %}
+                <li><a href="/admin"><i class="fa-solid fa-hammer"></i></i> АдминПанель</a></li>
+                {% endif %}
+                {% endif %}
             </ul>
             <div class="login">
                 {% if request.user.is_authenticated %}

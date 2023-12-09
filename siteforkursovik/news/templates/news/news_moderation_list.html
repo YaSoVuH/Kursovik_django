@@ -1,19 +1,21 @@
 {% extends 'main/layout.html' %}
 
-{% block title %}Новости{% endblock %}
+{% block title %}Модерация{% endblock %}
 
 {% block content %}
-    <div class="news-title-center">Новости:</div>
+    <div class="news-title-center">Новости без модерации:</div>
 </hr>
     {% for el in news %}
-    {% if el.is_modarated %}
+    {% if not el.is_modarated %}
     <div class="article">
         <h2 class="article-title">{{ el.titel }}</h2>
         <p class="article-description">{{ el.intro }}</p>
+        <p class="article-description">{{ el.full_text }}</p>
         <img src="{{ el.photo }}" alt="Изображение статьи">
         {{ el.photo }}
+        {{ el.author }}
         <p class="article-time"><span>Время публикации: {{ el.date_create }}</span></p>
-        <a href="{% url 'news-detail' el.id %}" class="btn btn-warning">Читать статью</a>
+        <a href="{% url 'news-update-moderator' el.id %}" class="btn btn-warning">Читать статью</a>
     </div>
     {% endif %}
     {% endfor %}
