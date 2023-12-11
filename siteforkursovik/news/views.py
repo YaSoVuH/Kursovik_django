@@ -2,6 +2,11 @@ from django.shortcuts import render, redirect
 from .models import News
 from .forms import NewsForm, ModerationNewsForm
 from django.views.generic import DetailView, UpdateView, DeleteView, CreateView
+from .utils import AdminStaffRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib import messages
+from django.contrib.auth.decorators import login_required
+from django.contrib.admin.views.decorators import staff_member_required
 
 # Create your views here.
 
@@ -9,6 +14,8 @@ def news_home(request):
     news = News.objects.order_by('date_create')
     return render(request, 'news/news_home.html', {"news": news})
 
+@login_required
+@staff_member_required
 def Moderation_News(request):
     news = News.objects.order_by('date_create')
     return render(request, 'news/news_moderation_list.html', {"news": news})
@@ -24,18 +31,41 @@ class NewsUpdateView(UpdateView):
     
     form_class  = NewsForm
 
-class NewsUpdateModeratorView(UpdateView):
+    def dispatch(self, request, *args, **kwargs):
+        obj = self.get_object()
+        if (obj.author != self.request.user) and (not self.request.user.is_staff) and (not self.request.user.is_superuser):
+            messages.error(request, "Вы не автор статьи!")
+            return redirect(f"/news/{obj.id}")
+        messages.success(request, "Вы успешно отредактировали статью!")
+        return super(NewsUpdateView, self).dispatch(request, *args, **kwargs)
+
+class NewsUpdateModeratorView(AdminStaffRequiredMixin, UpdateView):
     model = News
     template_name = 'news/update_moderator.html'
+    success_url = '/news/NewsModeration'
 
     form_class  = ModerationNewsForm
 
-class NewsDeleteView(DeleteView):
+    def dispatch(self, request, *args, **kwargs):
+        obj = self.get_object()
+        if (not self.request.user.is_staff) and (not self.request.user.is_superuser):
+            return redirect(f"/news/{obj.id}")
+        return super(NewsUpdateModeratorView, self).dispatch(request, *args, **kwargs)
+
+class NewsDeleteView(LoginRequiredMixin, DeleteView):
     model = News
     template_name = 'news/news_delete.html'
     success_url = '/news/'
 
-class NewsCreateView(CreateView):
+    def dispatch(self, request, *args, **kwargs):
+        obj = self.get_object()
+        if (obj.author != self.request.user) and (not self.request.user.is_staff) and (not self.request.user.is_superuser):
+            messages.error(request, "Вы не автор статьи!")
+            return redirect(f"/news/{obj.id}")
+        messages.success(request, "Успешно удалили статью!")
+        return super(NewsDeleteView, self).dispatch(request, *args, **kwargs)
+
+class NewsCreateView(LoginRequiredMixin, CreateView):
     form_class = NewsForm
     template_name = 'news/create.html'
     success_url = '/news/'
@@ -43,35 +73,9 @@ class NewsCreateView(CreateView):
     def form_valid(self, form):
         self.object = form.save(commit=False)
         self.object.author = self.request.user
-        self.object.is_modarated = False
+        if (not self.request.user.is_staff) or (not self.request.user.is_staff):
+            self.object.is_modarated = False
+        else:
+            self.object.is_modarated = True
         self.object.save()
         return super().form_valid(form)
-
-
-'''
-def create(request):
-    if not request.user.is_authenticated:
-        return redirect('login')
-
-    error = ''
-
-    if request.method == 'POST':
-        form = NewsForm()
-    else:
-        redirect('/')
-    
-    def form_valid(self, form):
-        self.object = form.save(commit=False)
-        self.object.post_author = self.request.user
-        self.object.save()
-        return super(PostCreate, self).form_valid(form)
-
-    form = NewsForm()
-
-    data = {
-        'form': form,
-        'error': error
-    }
-
-    return render(request, 'news/create.html', data)
-'''

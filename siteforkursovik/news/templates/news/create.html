@@ -3,6 +3,13 @@
 {% block title %}Добавление статьи{% endblock %}
 
 {% block content %}
+{% if messages %}
+<div class="message">
+    <ul class="message">
+        <li>{% for message in messages %}{{ message }}{% endfor %}</li>
+    </ul>
+</div>
+{% endif %}
     <div class="div-center">
         <h1>Форма по добавлению статьи</h1>
         <form class="input" method="POST">
@@ -11,7 +18,6 @@
             {{ form.intro }}<br>
             {{ form.full_text }}<br>
             {{ form.photo }}<br>
-            {{ form.slug }}<br>
             <span style="color: red;">{{ form.error }}</span><br><br>
             <button class="btn btn-success" type="submit">Добавить статью</button>
         </form>

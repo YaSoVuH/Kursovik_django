@@ -3,11 +3,18 @@
 {% block title %}{{ news.titel }}{% endblock %}
 
 {% block content %}
+{% if messages %}
+<div class="message">
+    <ul class="message">
+        <li>{% for message in messages %}{{ message }}{% endfor %}</li>
+    </ul>
+</div>
+{% endif %}
 <h2 class="article-title">{{ news.titel }}</h2>
 <p class="article-description">{{ news.intro }}</p>
 <p class="article-description">{{ news.full_text }}</p>
 {{ news.author }}
-<img src="/img/logo.jpg" alt="Изображение статьи">
+<img src="/media/{{news.photo}}" alt="Изображение статьи">
 <p class="article-time"><span>Время публикации: {{ news.date_create }}</span></p>
 <a href="{% url 'news-update' news.id %}" class="btn btn-warning">Редактировать статью</a></br>
 <a href="{% url 'news-delete' news.id %}" class="btn btn-warning">Удалить статью</a>
