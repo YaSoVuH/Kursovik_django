@@ -2,6 +2,8 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.template.defaultfilters import slugify
 
+import random
+
 class News(models.Model):
     titel = models.CharField('Название новости', max_length=64)
     slug = models.SlugField('Slug', max_length=64, unique=True, db_index=True)

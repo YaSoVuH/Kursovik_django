@@ -14,7 +14,11 @@
 <p class="article-description">{{ news.intro }}</p>
 <p class="article-description">{{ news.full_text }}</p>
 {{ news.author }}
+{% if news.photo %}
 <img src="/media/{{news.photo}}" alt="Изображение статьи">
+{% else %}
+Фото нет
+{% endif %}
 <p class="article-time"><span>Время публикации: {{ news.date_create }}</span></p>
 <a href="{% url 'news-update' news.id %}" class="btn btn-warning">Редактировать статью</a></br>
 <a href="{% url 'news-delete' news.id %}" class="btn btn-warning">Удалить статью</a>

@@ -12,7 +12,7 @@
 {% endif %}
     <div class="div-center">
         <h1>Форма по добавлению статьи</h1>
-        <form class="input" method="POST">
+        <form class="input" method="POST" enctype="multipart/form-data">
             {% csrf_token %}
             {{ form.titel }}<br>
             {{ form.intro }}<br>

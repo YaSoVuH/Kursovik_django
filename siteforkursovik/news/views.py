@@ -7,6 +7,8 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.admin.views.decorators import staff_member_required
+from django.conf import settings
+import os
 
 # Create your views here.
 
@@ -63,6 +65,11 @@ class NewsDeleteView(LoginRequiredMixin, DeleteView):
             messages.error(request, "Вы не автор статьи!")
             return redirect(f"/news/{obj.id}")
         messages.success(request, "Успешно удалили статью!")
+        if obj.photo:
+            try:
+                os.remove(f"{settings.MEDIA_ROOT.replace("\\", "/")}/{obj.photo}")
+            except FileNotFoundError:
+                return super(NewsDeleteView, self).dispatch(request, *args, **kwargs)
         return super(NewsDeleteView, self).dispatch(request, *args, **kwargs)
 
 class NewsCreateView(LoginRequiredMixin, CreateView):
