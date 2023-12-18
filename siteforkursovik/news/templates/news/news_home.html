@@ -15,10 +15,12 @@
     {% for el in news %}
     {% if el.is_modarated %}
     <div class="article">
-        <h2 class="article-title">{{ el.titel }}</h2>
-        <p class="article-description">{{ el.intro }}</p>
-        <p class="article-time"><span>Время публикации: {{ el.date_create }}</span></p>
-        <a href="{% url 'news-detail' el.id %}" class="btn btn-warning">Читать статью</a>
+        <div class="in_article">
+            <h2 class="article-title">{{ el.titel }}</h2>
+            <div class="article-description">{{ el.intro }}</div>
+            <p class="article-time"><span>{{ el.date_create }}</span></p>
+            <a href="/news/{{ el.slug }}" class="btn btn-warning detail_a_down">Читать статью</a>
+        </div>
     </div>
     {% endif %}
     {% endfor %}

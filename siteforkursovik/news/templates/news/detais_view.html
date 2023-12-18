@@ -10,17 +10,18 @@
     </ul>
 </div>
 {% endif %}
-<h2 class="article-title">{{ news.titel }}</h2>
-<p class="article-description">{{ news.intro }}</p>
-<p class="article-description">{{ news.full_text }}</p>
-{{ news.author }}
-{% if news.photo %}
-<img src="/media/{{news.photo}}" alt="Изображение статьи">
-{% else %}
-Фото нет
-{% endif %}
-<p class="article-time"><span>Время публикации: {{ news.date_create }}</span></p>
-<a href="{% url 'news-update' news.id %}" class="btn btn-warning">Редактировать статью</a></br>
-<a href="{% url 'news-delete' news.id %}" class="btn btn-warning">Удалить статью</a>
-<br><br><br>
+<div class="detail_view">
+    <h2 class="article-title">{{ news.titel }}</h2>
+    {% if news.photo %}
+    <img src="/media/{{news.photo}}" alt="Изображение статьи" class="PhotoWH">
+    {% endif %}
+    <br>
+    Автор: {{ news.author }} | {{ news.date_create }}<br>
+    <div class="art-div-d"><p class="article-description-d">{{ news.intro }}</p></div>
+    <p class="article-description-df">{{ news.full_text }}</p>
+    <br>
+    <a href="{% url 'news-update' news.id %}" class="btn btn-warning">Редактировать статью</a></br>
+    <a href="{% url 'news-delete' news.id %}" class="btn btn-warning">Удалить статью</a>
+    <br><br><br>
+</div>
 {% endblock %}

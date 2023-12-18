@@ -19,7 +19,7 @@ class News(models.Model):
         return f"Новость: {self.titel}"
     
     def get_absolute_url(self):
-        return f"/news/{self.id}"
+        return f"/news/{self.slug}"
     
     def save(self, *args, **kwargs):
         self.slug = slugify(self.titel)

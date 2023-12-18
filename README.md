@@ -9,7 +9,7 @@
     .\.venv\Scripts\activate
 
 ## Шаг 3:
-    python -r requirements.txt
+    pip install -r requirements.txt
 
 ## Шаг 4:
     cd siteforkursovik
@@ -29,7 +29,7 @@
     .\.venv\Scripts\activate
 
 ## Шаг 3:
-    python -r requirements.txt
+    pip install -r requirements.txt
 
 ## Шаг 4:
     cd siteforkursovik

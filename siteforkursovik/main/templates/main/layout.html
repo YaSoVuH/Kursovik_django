@@ -31,7 +31,7 @@
             </ul>
             <div class="login">
                 {% if request.user.is_authenticated %}
-                <div class="logined loginedt"><label>Вы авторизованы как {{ user.username }} | </label><a href="{% url 'logout' %}">Выйти</a></div>
+                <div class="logined loginedt"><label>Вы авторизованы как <b>{{ user.username }}</b> | </label><a href="{% url 'logout' %}">Выйти</a></div>
                 {% else %}
                 <a href="/login">Авторизация</a>
                 <a href="/register">Регистрация</a>
