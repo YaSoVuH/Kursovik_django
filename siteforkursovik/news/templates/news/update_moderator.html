@@ -8,7 +8,11 @@
         <form class="input" method="POST">
             {% csrf_token %}
 
-            {{ form }}
+            {% csrf_token %}
+            {{ form.titel }}<br>
+            {{ form.intro }}<br>
+            {{ form.full_text }}<br>
+            {{ form.is_m }}
             <button class="btn btn-success" type="submit">Опубликовать</button>
         </form>
     </div>

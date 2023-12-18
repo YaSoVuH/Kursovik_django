@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-j(6k699(25p%nxq08#wxm=29lc5e@dfy4tsw)d(i81p_7g)_5j
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '192.168.43.124'] # Тут добавлять IPv4-адрес вместо "192.168.43.124"
 
 
 # Application definition
