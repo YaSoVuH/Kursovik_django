@@ -8,17 +8,12 @@
 {% for el in news %}
 {% if not el.is_modarated %}
 <div class="article">
-    <h2 class="article-title">{{ el.titel }}</h2>
-    <p class="article-description">{{ el.intro }}</p>
-    <p class="article-description">{{ el.full_text }}</p>
-    {% if el.photo %}
-    <img src="/media/{{el.photo}}" alt="Изображение статьи">
-    {% else %}
-    Фото нет
-    {% endif %}
-    {{ el.author }}
-    <p class="article-time"><span>Время публикации: {{ el.date_create }}</span></p>
-    <a href="{% url 'news-update-moderator' el.id %}" class="btn btn-warning">Читать статью</a>
+    <div class="in_article">
+        <h2 class="article-title">{{ el.titel }}</h2>
+        <div class="article-description">{{ el.intro }}</div>
+        <p class="article-time"><span>{{ el.date_create }}</span></p>
+        <a href="{% url 'news-update-moderator' el.id %}" class="btn btn-warning detail_a_down">Модерация статьи</a>
+    </div>
 </div>
 {% endif %}
 {% endfor %}

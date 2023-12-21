@@ -1,6 +1,6 @@
 {% extends 'main/layout.html' %}
 
-{% block title %}Опубликование статьи{% endblock %}
+{% block title %}Модерация{% endblock %}
 
 {% block content %}
     <div class="div-center">
@@ -8,12 +8,17 @@
         <form class="input" method="POST">
             {% csrf_token %}
 
-            {% csrf_token %}
+            <label>Заголовок:</label>
             {{ form.titel }}<br>
+            <label>Краткое описание:</label>
             {{ form.intro }}<br>
+            <label>Полный текст:</label>
             {{ form.full_text }}<br>
-            {{ form.is_m }}
-            <button class="btn btn-success" type="submit">Опубликовать</button>
+            <label>Фото:</label>
+            {{ form.photo }}<br>
+            <label>Одобрить?:</label>
+            {{ form.is_modarated }}<br>
+            <button class="btn btn-success" style="float: center;" type="submit">Опубликовать</button>
         </form>
     </div>
 {% endblock %}

@@ -22,8 +22,7 @@ class NewsForm(ModelForm):
         }
 
 class ModerationNewsForm(ModelForm):
-    is_modarated = BooleanField(label='Проверено?: ')
-
+    
     class Meta:
         model = News
-        fields = ['is_modarated']
+        fields = ['titel', 'intro', 'full_text', 'photo', 'is_modarated']
