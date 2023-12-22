@@ -121,6 +121,16 @@ footer {
   /* IE */
 }
 
+.article-description-non-moder {
+  font-size: 18px;
+  margin-bottom: 10px;
+  height: 140px;
+  white-space: pre-wrap;
+  /* Chrome */
+  word-wrap: break-word;
+  /* IE */
+}
+
 img {
   width: 300px;
   height: 300px;

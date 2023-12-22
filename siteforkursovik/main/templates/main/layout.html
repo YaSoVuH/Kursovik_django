@@ -21,6 +21,7 @@
                 <li><a href="/about"><i class="fa-solid fa-comment"></i> О нас</a></li>
                 {% if request.user.is_authenticated %}
                 <li><a href="/news/create"><i class="fa-regular fa-address-card"></i> Добавить новость</a></li>
+                <li><a href="/news/MyNews"><i class="fa-regular fa-address-card"></i> Мои новости</a></li>
                 {% if request.user.is_staff %}
                 <li><a href="/news/NewsModeration"><i class="fa-solid fa-magnifying-glass"></i> Модерация новости</a></li>
                 {% endif %}

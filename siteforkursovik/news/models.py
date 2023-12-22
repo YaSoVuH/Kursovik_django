@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
-from django.template.defaultfilters import slugify
+from pytils.translit import slugify
 
 import random
 
@@ -22,7 +22,9 @@ class News(models.Model):
         return f"/news/{self.slug}"
     
     def save(self, *args, **kwargs):
-        self.slug = slugify(self.titel)
+        randomnumber = str(random.randint(10000000000, 99999999999))
+        titelslug = slugify(self.titel)
+        self.slug = titelslug + '-' + randomnumber
         super().save(*args, **kwargs)
 
     class Meta:

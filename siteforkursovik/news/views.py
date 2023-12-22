@@ -22,6 +22,11 @@ def Moderation_News(request):
     news = News.objects.order_by('date_create')
     return render(request, 'news/news_moderation_list.html', {"news": news})
 
+@login_required
+def MyNews(request):
+    news = News.objects.order_by('is_modarated')
+    return render(request, 'news/MyNews.html', {"news": news})
+
 class NewsDetailView(DetailView):
     model = News
     template_name = 'news/detais_view.html'

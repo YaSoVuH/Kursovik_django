@@ -1,0 +1,36 @@
+{% extends 'main/layout.html' %}
+
+{% block title %}Новости{% endblock %}
+
+{% block content %}
+{% if messages %}
+<div class="message">
+    <ul class="message">
+        <li>{{ messages }}</li>
+    </ul>
+</div>
+{% endif %}
+    <div class="news-title-center">Новости:</div>
+</hr>
+    {% for el in news %}
+    {% if el.author == request.user %}
+    <div class="article">
+        <div class="in_article">
+            {% if not el.is_modarated %}
+            <div style="color: red; font-size: 25px; margin-top: 2px;">Данная статья ещё не прошла модерацию!</div>
+            {% endif %}
+            <h2 class="article-title">{{ el.titel }}</h2>
+            
+            {% if not el.is_modarated %}
+            <div class="article-description-non-moder" style="height: 140;">{{ el.intro }}</div>
+            {% else %}
+            <div class="article-description">{{ el.intro }}</div>
+            {% endif %}
+            <p class="article-time"><span>{{ el.date_create }}</span></p>
+            <a href="/news/{{ el.slug }}" class="btn btn-warning detail_a_down">Читать статью</a>
+        </div>
+    </div>
+    {% endif %}
+    {% endfor %}
+    <br><br><br>
+{% endblock %}
