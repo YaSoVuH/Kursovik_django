@@ -167,14 +167,14 @@ img {
 
 .input1 input {
   margin: 5px;
-  width: 300px;
+  width: 50%;
   height: 30px;
 }
 
 .input1 textarea {
   margin: 5px;
   width: 50%;
-  height: 30px;
+  height: 100px;
 }
 
 .detail_view {

@@ -12,6 +12,7 @@
 {% endif %}
     <div class="news-title-center">Новости:</div>
 </hr>
+{% if news %}
     {% for el in news %}
     {% if el.is_modarated %}
     <div class="article">
@@ -24,5 +25,8 @@
     </div>
     {% endif %}
     {% endfor %}
+    {% else %}
+    <div style="text-align: center; font-size: 24px; margin: 10px;">Новостей нет</div>
+    {% endif %}
     <br><br><br>
 {% endblock %}
