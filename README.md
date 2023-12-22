@@ -49,4 +49,5 @@
 # Выход из виртуальной среды:
     deactivate
 
-![Выдра на последок](https://i.imgur.com/Ua7ARDP.png)
+# Выдра:
+    ![Выдра на последок](https://i.imgur.com/Ua7ARDP.png)
