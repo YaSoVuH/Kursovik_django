@@ -5,10 +5,10 @@
 {% block content %}
     <div class="div-center">
         <h1>Авторизация</h1>
-        <form class="input" method="POST">
+        <form class="loginandregister" method="POST">
             {% csrf_token %}
             {% for f in form %}
-            <p><label class="form-label" for="{{ f.id_for_label }}">{{ f.label }}</label>{{ f }}</p>
+            <p>{{ f }}</p>
             <div style="color: red;">{{ f.errors }}</div>
             {% endfor %}
             <button class="btn btn-success" type="submit">Авторизоваться</button>

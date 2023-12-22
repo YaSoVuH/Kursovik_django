@@ -165,13 +165,13 @@ img {
   margin: 10px auto;
 }
 
-.input input {
+.input1 input {
   margin: 5px;
-  width: 50%;
+  width: 300px;
   height: 30px;
 }
 
-.input textarea {
+.input1 textarea {
   margin: 5px;
   width: 50%;
   height: 30px;
@@ -213,4 +213,9 @@ img {
   /* Chrome */
   word-wrap: break-word;
   /* IE */
+}
+
+.loginandregister input {
+  width: 400px;
+  height: 25px;
 }
