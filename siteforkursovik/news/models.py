@@ -6,9 +6,9 @@ import random
 
 class News(models.Model):
     titel = models.CharField('Название новости', max_length=64)
-    slug = models.SlugField('Slug', max_length=64, unique=True, db_index=True)
+    slug = models.SlugField('Slug', unique=True, db_index=True)
     intro = models.CharField('Краткое описание статьи', max_length=250)
-    full_text = models.TextField('Текст статьи')
+    full_text = models.TextField('Текст статьи', max_length=1024)
     date_create = models.DateTimeField('Дата публикации', auto_now_add=True)
     date_update = models.DateTimeField('Дата обновления', auto_now=True)
     photo = models.ImageField('Фотография', upload_to="photos/uploaded/%Y/%m/%d/", blank=True)
