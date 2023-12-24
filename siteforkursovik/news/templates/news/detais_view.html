@@ -20,8 +20,8 @@
     <div class="art-div-d"><p class="article-description-d">{{ news.intro }}</p></div>
     <p class="article-description-df">{{ news.full_text }}</p>
     <br>
-    <a href="{% url 'news-update' news.id %}" class="btn btn-warning">Редактировать статью</a></br>
-    <a href="{% url 'news-delete' news.id %}" class="btn btn-warning">Удалить статью</a>
+    <a href="/news/{{ news.slug }}/update" class="btn btn-warning">Редактировать статью</a></br>
+    <a href="/news/{{ news.slug }}/delete" class="btn btn-warning">Удалить статью</a>
     <br><br><br>
 </div>
 {% endblock %}

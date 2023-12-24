@@ -18,7 +18,8 @@
             {{ form.photo }}<br>
             <label>Одобрить?:</label>
             {{ form.is_modarated }}<br>
-            <button class="btn btn-success" style="float: center;" type="submit">Опубликовать</button>
+            <button class="btn btn-success" style="float: center;" type="submit">Опубликовать</button><br>
         </form>
+        <a href="/news/{{ el.slug }}/delete" class="btn btn-warning">Удалить статью</a>
     </div>
 {% endblock %}

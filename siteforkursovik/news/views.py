@@ -42,7 +42,7 @@ class NewsUpdateView(UpdateView):
         obj = self.get_object()
         if (obj.author != self.request.user) and (not self.request.user.is_staff) and (not self.request.user.is_superuser):
             messages.error(request, "Вы не автор статьи!")
-            return redirect(f"/news/{obj.id}")
+            return redirect(f"/news/{obj.slug}")
         messages.success(request, "Вы успешно отредактировали статью!")
         return super(NewsUpdateView, self).dispatch(request, *args, **kwargs)
 
@@ -56,7 +56,7 @@ class NewsUpdateModeratorView(AdminStaffRequiredMixin, UpdateView):
     def dispatch(self, request, *args, **kwargs):
         obj = self.get_object()
         if (not self.request.user.is_staff) and (not self.request.user.is_superuser):
-            return redirect(f"/news/{obj.id}")
+            return redirect(f"/news/{obj.slug}")
         return super(NewsUpdateModeratorView, self).dispatch(request, *args, **kwargs)
 
 class NewsDeleteView(LoginRequiredMixin, DeleteView):
@@ -68,7 +68,7 @@ class NewsDeleteView(LoginRequiredMixin, DeleteView):
         obj = self.get_object()
         if (obj.author != self.request.user) and (not self.request.user.is_staff) and (not self.request.user.is_superuser):
             messages.error(request, "Вы не автор статьи!")
-            return redirect(f"/news/{obj.id}")
+            return redirect(f"/news/{obj.slug}")
         messages.success(request, "Успешно удалили статью!")
         if obj.photo:
             try:
